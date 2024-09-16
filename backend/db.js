@@ -27,7 +27,12 @@ const UserSchema=new mongoose.Schema({
 })
 
 const user=mongoose.model('User',UserSchema)
+const transschema=new mongoose.Schema({
+    userid:mongoose.Schema.Types.ObjectId,
+   ref:user
+})
+const transaction=mongoose.model('transaction',transschema)
 
 module.exports={
-    user
+    user,transaction
 }

@@ -20,4 +20,4 @@ res.status(403).json({})
 
 }
 
-module.exports=auth_middleware
+module.exports={auth_middleware}

@@ -1,7 +1,7 @@
 const express=require("express")
 const router=express.Router()
 const z=require("zod")
-const {user}=require("../db")
+const {user,transaction}=require("../db")
 const jwt=require("jsonwebtoken")
 const secret=require("../config")
 const {auth_middleware}=require("../middleware")
@@ -31,7 +31,10 @@ router.post("/Signup",async(req,res)=>{
     }
 
     const created=await user.create(body)
+await transaction.create({userid:created._id,
+    balance:Math.floor(Math.random()*100000)
 
+})
     const token=jwt.sign({userid:created._id},secret)
     res.json({
         token:token,

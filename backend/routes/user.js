@@ -5,6 +5,7 @@ const {user,transaction}=require("../db")
 const jwt=require("jsonwebtoken")
 const secret=require("../config")
 const {auth_middleware}=require("../middleware")
+router.use(express.json())
 const signupschema=z.object({
     username:z.string().email(),
     firstname:z.string(),
@@ -12,25 +13,35 @@ const signupschema=z.object({
     password:z.string().min(8)
 
 })
-router.post("/Signup",async(req,res)=>{
+router.post("/signup",async(req,res)=>{
+    const username=req.body.username
+    const firstname=req.body.firstname
+    const lastname=req.body.lastname
+    const password=req.body.password
 
-    const body=req.body
-    const {success}=signupschema.safeParse(body)
-    if(!success){
+    const validation=signupschema.safeParse({username:username,
+        firstname:firstname,
+        lastname:lastname,
+    password:password})
+   
+    if(!validation.success){
      return   res.json({
-            message:"incorrect inputs username is email"
+            message:"incorrect inputs"
         })
     }
 
     const resp=await user.findOne({username:req.body.username})
-    if(resp._id){
+    if(resp){
      return   res.json({
             message:"user/email already exits"
         })
 
     }
 
-    const created=await user.create(body)
+    const created=await user.create({username:username,
+        firstname:firstname,
+        lastname:lastname,
+    password:password})
 await transaction.create({userid:created._id,
     balance:Math.floor(Math.random()*100000)
 
@@ -56,7 +67,7 @@ if(!success)
     })
 }
 
-const User=await user.findOne({username:body.username,passsword:body.passsword})
+const User=await user.findOne({username:body.username,password:body.password})
 if(!User){
     return res.status(403).json({message:"user doesnt exist"})
 }

@@ -1,4 +1,6 @@
 const express=require("express")
+const mongoose=require("mongoose")
+
 const {transaction}=require("../db")
 const {auth_middleware}=require("../middleware")
 
@@ -18,7 +20,7 @@ router.get("/balance",auth_middleware,async(req,res)=>{
 router.post("/transfer",auth_middleware,async(req,res)=>{
 
 
-    const session=mongoose.startSession()
+    const session= await mongoose.startSession()
      session.startTransaction()
 
      const account=await transaction.findOne({userid:req.userid}).session(session)

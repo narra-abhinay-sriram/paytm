@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom"
 
 const Userbox = ({User}) => {
+    const navigate=useNavigate()
 
    
   return (
     <div className="w-full flex justify-between mt-10 overflow-auto">
     <div className="flex justify-start w-2/5 items-center">
-      <div className="ml-2">
+      <div className="ml-10">
         <p className="text-white font-bold text-xl bg-blue-800 rounded-full px-4 py-2 ml-5">{User.firstname[0].toUpperCase()}</p>
       </div>
       <div>
@@ -13,7 +15,9 @@ const Userbox = ({User}) => {
       </div>
     </div>
 <div className="w-3/5  ">
-    <button onClick={()}
+    <button onClick={()=>{
+        navigate("/send?id="+User._id+"&name="+User.firstname)
+    }}
     className="text-blue-700 font-bold p-3 rounded-lg hover:bg-opacity-55 ml-[600px] bg-white">Send Money</button>
 </div>
     </div>

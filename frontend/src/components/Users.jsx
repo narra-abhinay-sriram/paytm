@@ -21,13 +21,13 @@ const fetchdata=async()=>{
     <>
     <div>
         <div>
-      <p className="text-white font-bold mt-8 text-2xl">Users:</p>
+      <p className="text-white font-bold mt-8 text-2xl">Users: ({user && user.length})</p>
       </div>
       <div>
 <input onChange={(e)=>{
     setsearch(e.target.value)
 }}
-className="w-1/2 p-2 rounded-md"
+className="w-1/2 mt-2 p-2 rounded-md"
 type="text" 
 placeholder="search user here"
 />

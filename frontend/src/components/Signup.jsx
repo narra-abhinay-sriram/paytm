@@ -32,12 +32,12 @@ const [error,seterror]=useState()
     <p className="text-gray-400 text-lg mr-72">FirstName</p>
     <input onChange={(e)=>{setfirstname(e.target.value)}}
     className=" m-3 w-80 py-2 px-2 rounded-md"
-    type="text" placeholder="john@gmail.com"
+    type="text" placeholder="john"
     />
     <p className="text-gray-400 text-lg mr-72">LastName</p>
     <input onChange={(e)=>{setlastname(e.target.value)}}
     className=" m-3 w-80 py-2 px-2 rounded-md"
-    type="text" placeholder="john@gmail.com"
+    type="text" placeholder="wick"
     />
         <p className="text-gray-400 text-lg mr-64">Password</p>
     

@@ -14,7 +14,11 @@ const Appbar = () => {
 
         }}
         className="text-white font-semibold bg-blue-500 p-2 rounded-lg mr-4">Update Details</button>
-        <button className="text-white font-semibold bg-blue-500 p-1 rounded-lg ">Logout</button>
+        <button onClick={()=>{
+          localStorage.removeItem("token")
+          navigate("/")
+        }}
+        className="text-white font-semibold bg-blue-500 p-1 rounded-lg mr-2">Logout</button>
       </div>
       
     </div>

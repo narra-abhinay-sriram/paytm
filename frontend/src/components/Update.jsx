@@ -10,7 +10,7 @@ const Update = () => {
     const [error,seterror]=useState()
     const navigate=useNavigate()
     return (
-        <div className="flex justify-center items-center bg-blue-950 h-screen w-screen">
+        <div className="flex justify-center items-center bg-blue-950 h-screen w-screen bg-gradient-to-r from-black">
           <form onSubmit={(e)=>{e.preventDefault()}}
           className=" bg-black p-24 rounded-md  ">
             <div className="">
@@ -52,7 +52,7 @@ const Update = () => {
     className="text-white  w-80 mt-3 py-2 px-2 hover:opacity-65 rounded-md bg-blue-900">
         UPDATE
         </button>
-        {error && <p className="text-white">{error}</p>}
+        {error && <p className="text-white  w-80 mt-3 py-2 px-2">{error}</p>}
 
     </div>
     </form>

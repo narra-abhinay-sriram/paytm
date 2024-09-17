@@ -6,7 +6,7 @@ const Dashboard = () => {
   const [balance,setbalance]=useState()
   const [showbalance,setshowbalance]=useState(false)
   return (
-    <div className="bg-blue-900 w-screen h-100vh bg-gradient-to-r from-black">
+    <div className="bg-blue-900 w-screen h-100vh min-h-screen bg-gradient-to-r from-black">
       <div>
       <Appbar/>
       <hr className="h-1 bg-white border-0" />

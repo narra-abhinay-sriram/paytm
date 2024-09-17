@@ -10,7 +10,7 @@ const [firstname,setfirstname]=useState()
 const [lastname,setlastname]=useState()
 const [password,setpassword]=useState()
 const navigate=useNavigate()
-const [error,seterror]=useState(false)
+const [error,seterror]=useState()
 
 
     return (
@@ -50,21 +50,21 @@ const [error,seterror]=useState(false)
             {username,password,firstname,lastname}
         )
         console.log(resp)
-        if(resp.data.message=="user created successfully")
-        {        localStorage.setItem("token",resp.data.token)
+        if(resp.data.token)
+        {   localStorage.setItem("token",resp.data.token)
 
            navigate("/dashboard") 
         }
-        else seterror(true)
+        else seterror(resp.data.message)
 
 
     }}
-    className="text-white m-3 w-80  py-2 px-2 rounded-md bg-blue-900">
+    className="text-white m-3 w-80  py-2 px-2 hover:opacity-65 rounded-md bg-blue-900">
         Sign Up
         </button>
     </div>
-          </form>
-         {error && <p className="text-white">Error while SignUp</p>}
+    </form>
+         {error && <p className="text-white">{error}</p>}
         </div>
       )
     }
